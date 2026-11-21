@@ -381,6 +381,34 @@
    dmgNums.forEach(n=>{ let sx=n.x-cam.x, sy=n.y-cam.y; ctx.font='bold 20px Arial'; ctx.textAlign='center'; ctx.strokeStyle='black'; ctx.lineWidth=4; ctx.strokeText('-'+n.dmg, sx, sy); ctx.fillStyle='#FFD700'; ctx.fillText('-'+n.dmg, sx, sy); });
    requestAnimationFrame(loop);
   }
+<!-- AUTO ROTATE CODE - Last me paste karo -->
+<script>
+  // Game khulte hi Landscape me kar dega
+  function autoRotate() {
+    try {
+      if (screen.orientation && screen.orientation.lock) {
+        screen.orientation.lock('landscape').catch(()=>{});
+      }
+    } catch(e){}
+  }
+  // START button dabate hi rotate hoga
+  document.addEventListener('click', autoRotate);
+  window.addEventListener('load', autoRotate);
 </script>
+
+<style>
+  /* Agar phone seedha hai to ghumane ko bolega */
+  @media screen and (orientation: portrait) {
+    #rotateMsg{
+      display:flex !important;
+    }
+  }
+</style>
+<div id="rotateMsg" style="display:none;position:fixed;inset:0;background:#000;z-index:999;align-items:center;justify-content:center;flex-direction:column;text-align:center;font-size:22px;font-weight:bold;">
+  <div style="font-size:60px">🔄</div>
+  <p>Phone ko ghumao<br>Game Landscape me chalega!</p>
+</div>
+<!-- AUTO ROTATE CODE KHATAM -->
+</style>
 </body>
 </html>
